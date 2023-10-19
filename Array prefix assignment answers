@@ -1,3 +1,53 @@
+1. Equilibrium Index Element : https://www.interviewbit.com/problems/balance-array/
+public class Solution {
+    public int solve(ArrayList<Integer> A) {
+        int left_odd = 0;
+    int left_even = 0;
+    int right_odd = 0;
+    int right_even = 0;
+    for(int i = 0; i < A.size(); ++i)
+    {
+        if( i % 2 == 0)
+        {
+            right_even += A.get(i);
+        }
+        else
+        {
+            right_odd += A.get(i);
+        }
+    }
+    int count = 0;
+    for(int i = 0; i < A.size(); ++i)
+    {
+        if(i % 2 == 0)
+        {
+            right_even -= A.get(i);
+            if(left_odd + right_even == left_even + right_odd)
+            {
+                ++count;
+            }
+            left_even += A.get(i);
+        }
+        else
+        {
+            right_odd -= A.get(i);
+            if(left_odd + right_even == left_even + right_odd)
+            {
+                ++count;
+            }
+            left_odd += A.get(i);
+        }
+    }
+    return count;
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.. Pick from both sides!:    https://www.interviewbit.com/problems/pick-from-both-sides/
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 303. Range Sum Query - Immutable : https://leetcode.com/problems/range-sum-query-immutable/'
 
 class NumArray {
@@ -15,5 +65,7 @@ int prefix[];
         return prefix[right]-prefix[left-1];
     }
 }
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
